@@ -90,9 +90,9 @@ require('./routes/userAPI')(app);
 //   (req, res) => res.send({ user: req.user }));
 
 
-const connectEnsureLogin = require('connect-ensure-login');
-app.get('/', connectEnsureLogin.ensureLoggedIn(),
-  (req, res) => res.sendFile(path.resolve(__dirname, {root: __dirname})));
+// const connectEnsureLogin = require('connect-ensure-login');
+// app.get('/', connectEnsureLogin.ensureLoggedIn(),
+//   (req, res) => res.sendFile(path.resolve(__dirname, {root: __dirname})));
 
 // Server start
 app.listen(port, () => console.log('Server running on port ' + port));

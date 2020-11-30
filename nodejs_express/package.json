@@ -5,9 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bloop": "npm run start --prefix bloop",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run bloop\"",
     "start": "node server.js"
   },
   "author": "",

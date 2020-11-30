@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const { default: Profile } = require('../../bloop/src/features/profiles/Profile');
-const User = mongoose.model('users')
+const User = require('../app/models/user');
 
 module.exports = (app) => {
 
@@ -10,7 +9,7 @@ module.exports = (app) => {
   });
 
   app.post(`/api/user`, async (req, res) => {
-    let profile = await Profile.create(req.body);
+    let profile = await User.create(req.body);
     return res.status(201).send({
       error: false,
       profile
@@ -20,7 +19,7 @@ module.exports = (app) => {
   app.put(`/api/user/:id`, async (req, res) => {
     const {id} = req.params;
 
-    let profile = await Profile.findByIdAndUpdate(id, req.body);
+    let profile = await User.findByIdAndUpdate(id, req.body);
     
     return res.status(202).send({
       error: false,
@@ -31,7 +30,7 @@ module.exports = (app) => {
   app.delete(`/api/user/:id`, async (req, res) => {
     const {id} = req.params
     
-    let profile = await Profile.findByIdAndDelete(id);
+    let profile = await User.findByIdAndDelete(id);
 
     return res.status(202).send({
       error: false,
