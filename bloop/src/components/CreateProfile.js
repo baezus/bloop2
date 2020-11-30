@@ -9,8 +9,7 @@ const AddProfile = ({ addProfile }) => {
   const onChange = e => setProfileName(e.target.value)
 
   return (
-    <div>
-      <form
+    <div className="field"
         onSubmit = {e => {
           e.preventDefault()
           if (!profileName.trim()) {
@@ -20,9 +19,55 @@ const AddProfile = ({ addProfile }) => {
           setProfileName('')
         }}
       >
-        <input type="text" value={profileName} onChange={onChange}/>
-        <button type="submit">Add Profile</button>
-      </form>
+        <label className="label">Name</label>
+          <div className="control">
+            <input className="input" type="text" value={profileName} onChange={onChange}/>
+          </div>
+
+          <div className="file">
+            <label className="file-label">
+              <input className="file-input" type="file" name="photo"/>
+              <span className="file-cta">
+                <span className="file-label">
+                  Choose a file
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control">
+              <input className="input" type="email" placeholder="Email"/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Zip Code</label>
+            <div className="control">
+              <input className="input" type="text"/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Bloop</label>
+            <div className="control">
+              <input className="input" type="text"/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Bleep</label>
+            <div className="control">
+              <input className="input" type="text"/>
+            </div>
+          </div>
+          
+        <div className="field is-grouped">
+          <div className="control"></div>
+            <button type="submit" className="button is-link">Submit</button>
+          </div>
+        
     </div>
   )
 }

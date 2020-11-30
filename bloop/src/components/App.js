@@ -35,19 +35,23 @@ function App () {
   return (
     <Router>
     <div className="App">
-      <ul>
-
+      <ul className="section">
         <li>
           <Link className="nav-link" to={"/create-user"}>Create User</Link>
         </li>
-
       </ul>
+
+      <div className="container">
+        <p>How sad is this?</p>
+        <button class="button is-large">
+          Exceedingly !! 
+        </button>
+      </div>
 
       <div>
         <Switch>
           <Route exact path='/' component={CreateProfile}/>
           <Route path='/users/signup' component={CreateProfile}/>
-         
         </Switch>
       </div>
     </div>
