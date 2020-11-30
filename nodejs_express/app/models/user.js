@@ -1,9 +1,7 @@
 // app/models/user.js
-// load the things we need
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 
-//define the schema for our user model
 const userSchema = mongoose.Schema({
 
   local: {
@@ -13,6 +11,7 @@ const userSchema = mongoose.Schema({
   name: String,
   photo: String, //should be a link to static? Or ?
   zipcode: Number,
+  lastGeo: Array,
   bloop: String,
   bleep: String,
   inbox: Array

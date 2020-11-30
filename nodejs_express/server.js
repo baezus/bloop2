@@ -1,9 +1,12 @@
-//Express Config
+//-------------------------------------Express & MongoDB Config
 
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 2737;
 const mongoose = require('mongoose');
+const path = require('path');
+
+//--------------------------------------MIDDLEWARE
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -12,16 +15,17 @@ const session = require('express-session');
 app.use(express.static(__dirname));
 require('dotenv').config();
 
-//configuration
+//-------------------------------------MONGOOSE CONFIG
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
-//require('./config/passport')(passport);
 
+//------------------------------------PARSER & PASSPORT CONFIG
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //passport setup via express-session
+//require('./config/passport')(passport);
 app.use(session({
   secret: 'bolobrazy',
   resave: true,
@@ -30,11 +34,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// const Schema = mongoose.Schema;
-// const UserDetail = new Schema({
-//   username: String,
-//   password: String
-// });
+//--------------------------------------STACK ROUTES
+require('./routes/userAPI')(app);
+// require('./app/routes.js')(app, passport);
+
+//api backend built with help from: https://dev.to/pacheco/my-fullstack-setup-node-js-react-js-and-mongodb-2a4k
+
 
 // UserDetail.plugin(passportLocalMongoose);
 // const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
@@ -45,9 +50,7 @@ app.use(passport.session());
 // passport.serializeUser(UserDetails.serializeUser());
 // passport.deserializeUser(UserDetails.deserializeUser());
 
-// //Routes
 
-// const connectEnsureLogin = require('connect-ensure-login');
 
 // app.post('/login', (req, res, next) => {
 //   passport.authenticate('local', 
@@ -76,9 +79,7 @@ app.use(passport.session());
 //   { root: __dirname })
 // );
 
-// app.get('/',
-// connectEnsureLogin.ensureLoggedIn(),
-//   (req, res) => res.sendFile('html/index.html', {root: __dirname}));
+
 
 // app.get('/private',
 //   connectEnsureLogin.ensureLoggedIn(),
@@ -88,7 +89,10 @@ app.use(passport.session());
 //   connectEnsureLogin.ensureLoggedIn(),
 //   (req, res) => res.send({ user: req.user }));
 
-require('./app/routes.js')(app, passport);
+
+const connectEnsureLogin = require('connect-ensure-login');
+app.get('/', connectEnsureLogin.ensureLoggedIn(),
+  (req, res) => res.sendFile(path.resolve(__dirname, {root: __dirname})));
 
 // Server start
 app.listen(port, () => console.log('Server running on port ' + port));
