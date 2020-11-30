@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
-import App from './App';
+import App from './components/App';
 
 const store = configureStore({ 
   reducer: rootReducer
