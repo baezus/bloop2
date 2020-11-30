@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+//const User = mongoose.model('User');
 const User = require('../app/models/user');
 
 module.exports = (app) => {
 
   app.get(`/api/user`, async (req, res) => {
     let profiles = await User.find();
+    console.log('boop boop be doop');
     return res.status(200).send(profiles);
   });
 
