@@ -12,8 +12,6 @@ const userAPI = async () => {
     } catch (e) {
       console.log('error getting things: ', e);
     }
-  }
-
-
+}
 
 export default userAPI;

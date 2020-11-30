@@ -117,7 +117,7 @@ app.get('/signin', function(req, res) {
   // ({ message: 'signin page' });
 });
 
-app.post('/local-reg', passport.authenticate('local-signup', {
+app.post('/register', passport.authenticate('local-signup', {
   successRedirect: '/',
   failureRedirect: '/signin'
 }));
