@@ -13,6 +13,7 @@ app.use(express.static(__dirname));
 require('dotenv').config();
 
 //configuration
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
 //require('./config/passport')(passport);
 
