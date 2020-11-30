@@ -28,4 +28,5 @@ userSchema.methods.validPassword = function(password) {
 };
 
 //create the model and link it
-module.exports = mongoose.model('User', userSchema);
+const UserDoc = mongoose.model('UserDoc', userSchema);
+module.exports = UserDoc;

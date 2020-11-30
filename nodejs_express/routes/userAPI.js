@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI);
 //const User = mongoose.model('User');
-const User = require('../app/models/user');
+const UserDoc = require('../app/models/user');
+const UserModel = new UserDoc();
+console.log('UserModel: ', UserModel);
 
 module.exports = (app) => {
 
   app.get(`/api/user`, async (req, res) => {
-    let profiles = await User.find();
-    console.log('boop boop be doop');
+    let profiles = await UserDoc.find({});
+    console.log('boop boop be doop', UserModel);
     return res.status(200).send(profiles);
   });
 
