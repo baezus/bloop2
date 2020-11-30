@@ -42,14 +42,12 @@ function App () {
       </ul> */}
 
       <div className="second-section">
-        <section className="hero is-fullheight is-success has-background-black second-section">
+        <section className="hero is-fullheight is-success has-background-pink second-section">
           <div className="hero-body">
               <div className="container">
                 <div className="columns">
                   <div className="column">
-                  <h1 className="title is-1">Boop</h1>
-                  </div>
-                  <div className="column">
+                  <h1 className="title is-1">Bloop</h1><br/>
                   <h3 className="subtitle is-3">Who's out there?</h3>
                   </div>
                 </div>
