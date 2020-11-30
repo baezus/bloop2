@@ -45,7 +45,7 @@ function App () {
       <div>
         <Switch>
           <Route exact path='/' component={CreateProfile}/>
-          <Route path='/create-user' component={CreateProfile}/>
+          <Route path='/users/signup' component={CreateProfile}/>
          
         </Switch>
       </div>
