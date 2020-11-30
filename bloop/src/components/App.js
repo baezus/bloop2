@@ -41,11 +41,16 @@ function App () {
         </li>
       </ul>
 
-      <div className="container">
-        <p>How sad is this?</p>
-        <button class="button is-large">
-          Exceedingly !! 
-        </button>
+      <div className="second-section">
+        <section className="hero is-fullheight is-success has-background-black second-section">
+          <div className="hero-body">
+              <div className="container">
+                <div className="columns">
+                  <h1>Boop</h1>
+                </div>
+              </div>
+            </div>
+          </section>
       </div>
 
       <div>
