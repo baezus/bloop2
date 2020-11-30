@@ -1,0 +1,7 @@
+@charset "utf-8";
+@import "./variables.scss";
+@import "../../node_modules/bulma/bulma.sass";
+
+body {
+  background-color: $primaryColor;
+}

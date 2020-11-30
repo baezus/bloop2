@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import userAPI from '../apis/profileService'
 import CreateProfile from './CreateProfile'
+import '../styles/bloop.scss'
 
 function App () {
   const [profiles, setProfiles] = useState();
