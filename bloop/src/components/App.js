@@ -46,7 +46,12 @@ function App () {
           <div className="hero-body">
               <div className="container">
                 <div className="columns">
-                  <h1>Boop</h1>
+                  <div className="column">
+                  <h1 className="title is-1">Boop</h1>
+                  </div>
+                  <div className="column">
+                  <h3 className="subtitle is-3">Who's out there?</h3>
+                  </div>
                 </div>
               </div>
             </div>
