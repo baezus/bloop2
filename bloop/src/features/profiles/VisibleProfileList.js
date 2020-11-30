@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { createSelector } from '@reduxjs/toolkit'
-import { toggleProfile } from 'features/profiles/profilesSlice'
+import { toggleProfile } from './profilesSlice'
 import ProfileList from './ProfileList'
-import { VisibilityFilters } from 'features/filters/filtersSlice'
+import { VisibilityFilters } from '../filters/filtersSlice'
 
 const selectProfiles = state => state.profiles
 const selectFilter = state => state.visibilityFilter
