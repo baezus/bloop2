@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Footer from '../features/filters/Footer'
 import AddProfile from '../features/profiles/AddProfile'
 import VisibleProfileList from '../features/profiles/VisibleProfileList'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import userAPI from '../apis/profileService'
-
+import CreateProfile from './CreateProfile'
 
 function App () {
   const [profiles, setProfiles] = useState();
@@ -16,7 +17,7 @@ function App () {
   })
 
   const getProfiles = async () => {
-    let res = await userAPI.getAll();
+    let res = await userAPI();
     console.log(res);
     setProfiles(res);
   }
@@ -31,22 +32,27 @@ function App () {
   };
   
   return (
-    <div>
-      <ul className="profile__list">
-        {( profiles && profiles.length > 0) ? (
-          profiles.map(profile => renderProfile(profile))
-        ) : (
-          <p>No profiles found</p>
-        )}
+    <Router>
+    <div className="App">
+      <ul>
+
+        <li>
+          <Link className="nav-link" to={"/create-user"}>Create User</Link>
+        </li>
+
       </ul>
-      <p>Add profile?</p>
-      <AddProfile />
-      <p>'Visible Profile List': </p>
-      <VisibleProfileList />
-      <p>'Footer': </p>
-      <Footer />
+
+      <div>
+        <Switch>
+          <Route exact path='/' component={CreateProfile}/>
+          <Route path='/create-user' component={CreateProfile}/>
+         
+        </Switch>
+      </div>
     </div>
-  );
-};
+  </Router>
+  )
+}
+
 
 export default App;

@@ -1,20 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import App from './components/App';
+import { BrowserRouter } from 'react-router-dom';
 
-const store = configureStore({ 
-  reducer: rootReducer
-})
+// const store = configureStore({ 
+//   reducer: rootReducer
+// })
 
-render(
-    <Provider store={store}>
+ReactDOM.render(
+    <BrowserRouter>
       <App />
-    </Provider>,
-  document.getElementById('root')
-)
-
+    </BrowserRouter>,
+    document.getElementById('root')
+);
 
 
