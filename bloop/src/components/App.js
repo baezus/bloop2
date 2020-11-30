@@ -35,11 +35,11 @@ function App () {
   return (
     <Router>
     <div className="App">
-      <ul className="section">
+      {/* <ul className="section">
         <li>
           <Link className="nav-link" to={"/create-user"}>Create User</Link>
         </li>
-      </ul>
+      </ul> */}
 
       <div className="second-section">
         <section className="hero is-fullheight is-success has-background-black second-section">
