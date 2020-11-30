@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+// import { connect } from 'react-redux'
+// import { addProfile } from './profilesSlice'
 import axios from 'axios';
+
+// const mapDispatch = { addProfile }
+// const AddProfile = ({ })
 
 export default class CreateProfile extends Component {
   constructor(props) { 
@@ -13,7 +18,6 @@ export default class CreateProfile extends Component {
       name: '',
       email: ''
     }
-
   };
 
   onChangeUserName(e) {
