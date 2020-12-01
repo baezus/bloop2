@@ -28,7 +28,6 @@ const AddProfile = ({ addProfile }) => {
     setZipCode('')
     setBloop('')
     setBleep('')
-
   }
 
   return (
@@ -41,8 +40,7 @@ const AddProfile = ({ addProfile }) => {
           </div>
         </div>
 
-          <div className="field">
-          <div className="file">
+          <div className="file has-name is-boxed">
             <label className="file-label">Avatar: 
               <input className="file-input" type="file" name="photo" onChange={onPhotoChange}/>
               <span className="file-cta">
@@ -50,8 +48,10 @@ const AddProfile = ({ addProfile }) => {
                   Choose a file
                 </span>
               </span>
+              <span className="file-name">
+                Don't be scared ~!
+              </span>
             </label>
-          </div>
           </div>
 
           <div className="field">

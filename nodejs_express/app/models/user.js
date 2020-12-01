@@ -13,6 +13,7 @@ const profileSchema = mongoose.Schema({
   bloop: String,
   bleep: String,
   inbox: Array
+  
 });
 
 

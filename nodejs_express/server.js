@@ -2,11 +2,13 @@
 
 const express = require('express');
 const port = process.env.PORT || 2737;
-const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 const userAPI = require('./routes/userAPI')
 const indexAPI = require('./routes/index')
+const mongoose = require('mongoose');
+const maybeDB = require('./app/models/index');
+
 //--------------------------------------MIDDLEWARE
 const passport = require('passport');
 const bodyParser = require('body-parser');
@@ -15,10 +17,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');
 const cors = require('cors');
-const multer = require('multer');
-const upload = multer({ dest: "./static"});
 
-app.use(express.static(__dirname));
 require('dotenv').config();
 
 const corsOptions = {
@@ -43,10 +42,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //-------------------------------------- ROUTES
-const db = require('./app/models/index');
 app.use('/', indexAPI);
-app.use('/users', userAPI); //this is what is sending my multer awry
-console.log(db.Profile)
+app.use('/users', userAPI); 
 
 // Server start
 app.listen(port, () => console.log('Server running on port ' + port));
