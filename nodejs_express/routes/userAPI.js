@@ -3,7 +3,7 @@ const router = express.Router();
 const Profile = require('../app/models/user.js');
 const { forwardAuthenticated } = require('../config/auth');
 const passport = require('passport');
-
+const { response } = require('express');
 
 router.post('/signup', async (req, res) => {
   const newUser = req.body;
@@ -17,11 +17,19 @@ router.post('/signup', async (req, res) => {
   res.redirect('http://localhost:3000')
 });
 
-//Login
-router.post('/login', (req, res, next) => {
+//login GET route
+router.get('/login', async (req, res) => {
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/login'
+    failureRedirect: '/login'});
+    console.log('Logged in!');
+});
+
+//Login
+router.post('/login', async (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/'
   })(req, res, next);
 });
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Link } from 'react-router-dom';
 import CreateProfile from './CreateProfile'
+import Login from './LogIn'
 import '../styles/bloop.scss'
 
 function App () {
@@ -35,7 +36,8 @@ function App () {
       <div>
         <Switch>
           <Route exact path="/"/>
-          <Route path='/users/signup' component={CreateProfile}/>
+          <Route exact path='/users/signup' component={CreateProfile}/>
+          <Route exact path='/users/login' component={Login}/>
         </Switch>
       </div>
     </div>
