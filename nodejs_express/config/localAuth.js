@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt-nodejs')
 const Q = require('q');
 require('dotenv').config();
 
@@ -35,6 +35,6 @@ const localAuth = function (username, password) {
   });
   
   return deferred.promise;
-}
+};
 
-export default localAuth;
+module.exports = localAuth;

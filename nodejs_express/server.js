@@ -16,6 +16,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const localAuth = require('./config/localAuth');
 const localReg = require('./config/localReg');
+const multer = require('multer');
+const upload = multer({ dest: "./static"});
 
 app.use(express.static(__dirname));
 require('dotenv').config();
@@ -38,6 +40,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+let LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done) {
   console.log('serializing ' + user.username);
@@ -104,7 +107,7 @@ function ensureAuth(req, res, next) {
 
 //--------------------------------------STACK ROUTES
 const db = require('./app/models/index');
-app.use('/users', userAPI);
+app.use('/users', userAPI); //this is what is sending my multer awry
 console.log(db.Profile)
 
 app.get('/', (req, res) => {

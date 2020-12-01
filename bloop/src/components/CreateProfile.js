@@ -6,10 +6,23 @@ import axios from 'axios';
 const mapDispatch = { addProfile }
 const AddProfile = ({ addProfile }) => {
   const [profileName, setProfileName] = useState('')
-  const onChange = e => setProfileName(e.target.value)
+  const [profilePhoto, setProfilePhoto] = useState('')
+  const [emailAddress, setEmailAddress] = useState('')
+  const [zipCode, setZipCode] = useState('')
+  const [bloop, setBloop] = useState('')
+  const [bleep, setBleep] = useState('')
+
+  const onNameChange = e => setProfileName(e.target.value)
+  const onPhotoChange = e => setProfilePhoto(e.target.value)
+  const onEmailChange = e => setEmailAddress(e.target.value)
+  const onZipCodeChange = e => setZipCode(e.target.value)
+  const onBloopChange = e => setBloop(e.target.value)
+  const onBleepChange = e => setBleep(e.target.value)
+
 
   return (
-    <div className="field"
+    <form method="POST" action="/users/signup" encType="multipart/form-data">
+    <div className="control"
         onSubmit = {e => {
           e.preventDefault()
           if (!profileName.trim()) {
@@ -21,12 +34,12 @@ const AddProfile = ({ addProfile }) => {
       >
         <label className="label">Name</label>
           <div className="control">
-            <input className="input" type="text" value={profileName} onChange={onChange}/>
+            <input className="input" type="text" value={profileName} onChange={onNameChange}/>
           </div>
 
           <div className="file">
-            <label className="file-label">
-              <input className="file-input" type="file" name="photo"/>
+            <label className="file-label">Avatar: 
+              <input className="file-input" type="file" value={profilePhoto} name="profPic" onChange={onPhotoChange}/>
               <span className="file-cta">
                 <span className="file-label">
                   Choose a file
@@ -38,37 +51,38 @@ const AddProfile = ({ addProfile }) => {
           <div className="field">
             <label className="label">Email</label>
             <div className="control">
-              <input className="input" type="email" placeholder="Email"/>
+              <input className="input" type="email" placeholder="Email" value={emailAddress} onChange={onEmailChange} onSubmit={setEmailAddress}/>
             </div>
           </div>
 
           <div className="field">
             <label className="label">Zip Code</label>
             <div className="control">
-              <input className="input" type="text"/>
+              <input className="input" placeholder="Zip Code" value={zipCode} onChange={onZipCodeChange} onSubmit={setZipCode} type="text"/>
             </div>
           </div>
 
           <div className="field">
             <label className="label">Bloop</label>
             <div className="control">
-              <input className="input" type="text"/>
+              <input className="input" type="text" name="bloop" onSubmit={setBloop} value={bloop} onChange={onBloopChange}/>
             </div>
           </div>
 
           <div className="field">
             <label className="label">Bleep</label>
             <div className="control">
-              <input className="input" type="text"/>
+              <input className="input" type="text" name="bleep" value={bleep} onChange={onBleepChange} onSubmit={setBleep}/>
             </div>
           </div>
           
-        <div className="field is-grouped">
+        <div className="field">
           <div className="control"></div>
             <button type="submit" className="button is-link">Submit</button>
           </div>
         
     </div>
+    </form>
   )
 }
 

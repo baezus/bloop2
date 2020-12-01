@@ -11,44 +11,47 @@ import '../styles/bloop.scss'
 function App () {
   const [profiles, setProfiles] = useState();
 
-  useEffect(() => {
-    if (!profiles) {
-      getProfiles();
-    }
-  })
+  // useEffect(() => {
+  //   if (!profiles) {
+  //     getProfiles();
+  //   }
+  // })
 
-  const getProfiles = async () => {
-    let res = await userAPI();
-    console.log(res);
-    setProfiles(res);
-  }
+  // const getProfiles = async () => {
+  //   let res = await userAPI();
+  //   console.log(res);
+  //   setProfiles(res);
+  // }
 
-  const renderProfile = profile => {
-    return (
-      <li key={profile._id} className="list__item profile">
-        <h3 className="profile__name">{profile.name}</h3>
-        <p className="profile__email">{profile.email}</p>
-      </li>
-    );
-  };
+  // const renderProfile = profile => {
+  //   return (
+  //     <li key={profile._id} className="list__item profile">
+  //       <h3 className="profile__name">{profile.name}</h3>
+  //       <p className="profile__email">{profile.email}</p>
+  //     </li>
+  //   );
+  // };
   
   return (
     <Router>
     <div className="App">
-      {/* <ul className="section">
-        <li>
-          <Link className="nav-link" to={"/create-user"}>Create User</Link>
-        </li>
-      </ul> */}
-
       <div className="second-section">
         <section className="hero is-fullheight is-success has-background-pink second-section">
           <div className="hero-body">
               <div className="container">
                 <div className="columns">
                   <div className="column">
-                  <h1 className="title is-1">Bloop</h1><br/>
-                  <h3 className="subtitle is-3">Who's out there?</h3>
+                    <h1 className="title is-1">Bloop</h1><br/>
+                    <h3 className="subtitle is-3">Who's out there?</h3>
+                  </div>
+                  <div className="column">
+                    <nav className="breadcrumb is-right is-large has-bullet-separator" aria-label="breadcrumbs">
+                      <ul>
+                        <li className="nav-link"><Link to="/" className="nav-link">Bloop</Link></li>
+                        <li><Link to="/users/login" className="nav-link">Log In</Link></li>
+                        <li><Link to="/users/signup" className="nav-link">Register</Link></li>
+                      </ul>
+                    </nav>
                   </div>
                 </div>
               </div>
