@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
     "bulma": "^0.9.1",
+    "cors": "^2.8.5",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

@@ -19,27 +19,28 @@ const AddProfile = ({ addProfile }) => {
   const onBloopChange = e => setBloop(e.target.value)
   const onBleepChange = e => setBleep(e.target.value)
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    addProfile(profileName, profilePhoto, emailAddress, zipCode, bloop, bleep)
+    setProfileName('')
+    setProfilePhoto('')
+    setEmailAddress('')
+    setZipCode('')
+    setBloop('')
+    setBleep('')
+  }
 
   return (
-    <div className="control">
-    <form method="POST" action="http://localhost:2737/users/signup" encType="multipart/form-data"
-        onSubmit = {e => {
-          e.preventDefault()
-          addProfile(profileName, profilePhoto, emailAddress, zipCode, bloop, bleep)
-          setProfileName('')
-          setProfilePhoto('')
-          setEmailAddress('')
-          setZipCode('')
-          setBloop('')
-          setBleep('')
-        }}
-      >
+    <form method="POST" action="http://localhost:2737/users/signup" onSubmit= {onSubmit}>
+
+        <div className="field">
         <label className="label">Name</label>
           <div className="control">
             <input className="input" type="text" name="name" onChange={onNameChange}/>
           </div>
+        </div>
 
-          <div className="control">
+          <div className="field">
           <div className="file">
             <label className="file-label">Avatar: 
               <input className="file-input" type="file" name="photo" onChange={onPhotoChange}/>
@@ -52,19 +53,17 @@ const AddProfile = ({ addProfile }) => {
           </div>
           </div>
 
-          <div className="control">
           <div className="field">
+          <div className="control">
             <label className="label">Email</label>
-            <div className="control">
-              <input className="input" type="email" placeholder="Email" name="email" onChange={onEmailChange}/>
-            </div>
+              <input className="input" type="email" name="email" onChange={onEmailChange}/>
           </div>
           </div>
 
           <div className="field">
             <label className="label">Zip Code</label>
             <div className="control">
-              <input className="input" placeholder="Zip Code" name="zipcode" onChange={onZipCodeChange} onSubmit={setZipCode} type="text"/>
+              <input className="input" name="zipcode" onChange={onZipCodeChange} onSubmit={setZipCode} type="text"/>
             </div>
           </div>
 
@@ -78,17 +77,15 @@ const AddProfile = ({ addProfile }) => {
           <div className="field">
             <label className="label">Bleep</label>
             <div className="control">
-              <input className="input" type="text" name="bleep" onChange={onBleepChange} onSubmit={setBleep}/>
+              <input className="input" type="text" name="bleep" onSubmit={setBleep} onChange={onBleepChange} />
             </div>
           </div>
           
         <div className="field">
-          <div className="control"></div>
-            <input type="submit" className="button is-link" value="Submit!"/>
-          </div>
-      
+            <label className="label">Submit</label>
+            <input type="submit" className="button is-link" name="submit"/>
+        </div>
     </form>
-    </div>
   )
 }
 

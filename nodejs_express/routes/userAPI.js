@@ -19,8 +19,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.post('/signup', (req, res) => {
   const newUser = req.body;
   console.log(newUser);
-  Profile.create({newUser}, (req, userMade) => {
-    console.log('User made: ', userMade);
+  Profile.create(newUser, (err, userMade) => {
+    console.log('User made: ', newUser);
     res.redirect('http://localhost:3000')
   })
   
