@@ -96,11 +96,11 @@ io.on('connection', socket => {
 
 // Server start
 // app.listen(port, () => console.log('Server running on port ' + port));
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-});
+// io.on('connection', function(socket){
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg);
+//   });
+// });
 
 server.listen(process.env.PORT || 2737, function () {
   console.log('Server is running on localhost: 2737!')
