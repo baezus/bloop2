@@ -4,8 +4,9 @@ import '../styles/dashboard.scss';
 const Dashboard = () => {
 
   return(
+    <section className="section-two">
     <div className="columns">
-      <div className="column is-half">Profile Card
+      <div className="column is-half">
       <div className="card">
       <header className="card-header">
       <p className="card-header-title">
@@ -25,7 +26,7 @@ const Dashboard = () => {
       </div>
       </div>
 
-      <div className="column">BLAH
+      <div className="column">
         <div className="card">
           <header className="card-header">
             <p className="card-header-title">
@@ -41,6 +42,7 @@ const Dashboard = () => {
       
       <div className="column">Bloop</div>
     </div>
+    </section>
   );
 }
 

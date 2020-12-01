@@ -1,3 +1,16 @@
 @charset "utf-8";
 @import "./variables.scss";
 @import "./bloop.scss";
+
+.column {
+  display: flex;
+  flex: 1;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.section-two {
+  padding: 10 auto;
+  margin: 10 auto;
+  background: radial-gradient(at bottom right, #494d7e, #272744);
+}
