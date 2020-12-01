@@ -17,6 +17,7 @@ console.log(io);
 // io.set('browser client expires', true);
 
 app.use(express.static(__dirname + '/static'))
+app.use(express.static('public'))
 app.get('/', function (req, res, next) {
   res.sendFile(__dirname + '/index.html');
 });
