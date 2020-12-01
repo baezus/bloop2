@@ -69,11 +69,11 @@ app.use(passport.session());
 
 //-------------------------------------- ROUTES
 // app.use('/', indexAPI);
-app.get('/', function (req, res) {
-  res.send('hello world!');
-  console.log('root visited!');
-  io.emit('new_message', 'Hello io.world!');
-});
+// app.get('/', function (req, res) {
+//   res.send('hello world!');
+//   console.log('root visited!');
+//   io.emit('new_message', 'Hello io.world!');
+// });
 
 // Socket.io
 // const connections = [];
@@ -95,7 +95,13 @@ app.use('/users', userAPI);
 
  // Server start
 // app.listen(port, () => console.log('Server running on port ' + port));
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 
 server.listen(process.env.PORT || 2737, function () {
   console.log('Server is running on localhost: 2737!')
 });
+

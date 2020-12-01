@@ -3,6 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import CreateProfile from './CreateProfile'
 import Login from './LogIn'
 import Dashboard from './Dashboard';
+import Blah from './Blah';
 import '../styles/bloop.scss'
 
 function App () {
@@ -27,6 +28,7 @@ function App () {
                         <li><Link to="/users/signup" className="nav-link">Register</Link></li>
                       </ul>
                     </nav>
+                    <Blah/>
                   </div>
                 </div>
               </div>
