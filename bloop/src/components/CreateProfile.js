@@ -21,25 +21,28 @@ const AddProfile = ({ addProfile }) => {
 
 
   return (
-    <form method="POST" action="/users/signup" encType="multipart/form-data">
-    <div className="control"
+    <div className="control">
+    <form method="POST" action="http://localhost:2737/users/signup" encType="multipart/form-data"
         onSubmit = {e => {
           e.preventDefault()
-          if (!profileName.trim()) {
-            return console.log('what? no trim?')
-          }
-          addProfile(profileName)
+          addProfile(profileName, profilePhoto, emailAddress, zipCode, bloop, bleep)
           setProfileName('')
+          setProfilePhoto('')
+          setEmailAddress('')
+          setZipCode('')
+          setBloop('')
+          setBleep('')
         }}
       >
         <label className="label">Name</label>
           <div className="control">
-            <input className="input" type="text" value={profileName} onChange={onNameChange}/>
+            <input className="input" type="text" name="name" onChange={onNameChange}/>
           </div>
 
+          <div className="control">
           <div className="file">
             <label className="file-label">Avatar: 
-              <input className="file-input" type="file" value={profilePhoto} name="profPic" onChange={onPhotoChange}/>
+              <input className="file-input" type="file" name="photo" onChange={onPhotoChange}/>
               <span className="file-cta">
                 <span className="file-label">
                   Choose a file
@@ -47,42 +50,45 @@ const AddProfile = ({ addProfile }) => {
               </span>
             </label>
           </div>
+          </div>
 
+          <div className="control">
           <div className="field">
             <label className="label">Email</label>
             <div className="control">
-              <input className="input" type="email" placeholder="Email" value={emailAddress} onChange={onEmailChange} onSubmit={setEmailAddress}/>
+              <input className="input" type="email" placeholder="Email" name="email" onChange={onEmailChange}/>
             </div>
+          </div>
           </div>
 
           <div className="field">
             <label className="label">Zip Code</label>
             <div className="control">
-              <input className="input" placeholder="Zip Code" value={zipCode} onChange={onZipCodeChange} onSubmit={setZipCode} type="text"/>
+              <input className="input" placeholder="Zip Code" name="zipcode" onChange={onZipCodeChange} onSubmit={setZipCode} type="text"/>
             </div>
           </div>
 
           <div className="field">
             <label className="label">Bloop</label>
             <div className="control">
-              <input className="input" type="text" name="bloop" onSubmit={setBloop} value={bloop} onChange={onBloopChange}/>
+              <input className="input" type="text" name="bloop" onSubmit={setBloop} onChange={onBloopChange}/>
             </div>
           </div>
 
           <div className="field">
             <label className="label">Bleep</label>
             <div className="control">
-              <input className="input" type="text" name="bleep" value={bleep} onChange={onBleepChange} onSubmit={setBleep}/>
+              <input className="input" type="text" name="bleep" onChange={onBleepChange} onSubmit={setBleep}/>
             </div>
           </div>
           
         <div className="field">
           <div className="control"></div>
-            <button type="submit" className="button is-link">Submit</button>
+            <input type="submit" className="button is-link" value="Submit!"/>
           </div>
-        
-    </div>
+      
     </form>
+    </div>
   )
 }
 

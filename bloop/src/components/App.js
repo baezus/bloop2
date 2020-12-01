@@ -9,28 +9,6 @@ import CreateProfile from './CreateProfile'
 import '../styles/bloop.scss'
 
 function App () {
-  const [profiles, setProfiles] = useState();
-
-  // useEffect(() => {
-  //   if (!profiles) {
-  //     getProfiles();
-  //   }
-  // })
-
-  // const getProfiles = async () => {
-  //   let res = await userAPI();
-  //   console.log(res);
-  //   setProfiles(res);
-  // }
-
-  // const renderProfile = profile => {
-  //   return (
-  //     <li key={profile._id} className="list__item profile">
-  //       <h3 className="profile__name">{profile.name}</h3>
-  //       <p className="profile__email">{profile.email}</p>
-  //     </li>
-  //   );
-  // };
   
   return (
     <Router>
@@ -57,11 +35,12 @@ function App () {
               </div>
             </div>
           </section>
+          <CreateProfile />
       </div>
 
       <div>
         <Switch>
-          <Route exact path='/' component={CreateProfile}/>
+          <Route exact path="/"/>
           <Route path='/users/signup' component={CreateProfile}/>
         </Switch>
       </div>

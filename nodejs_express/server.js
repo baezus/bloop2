@@ -21,14 +21,16 @@ const upload = multer({ dest: "./static"});
 app.use(express.static(__dirname));
 require('dotenv').config();
 
-//-------------------------------------MONGOOSE CONFIG
-mongoose.Promise = global.Promise;
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+
 //------------------------------------MIDDLEWARE USE
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(cors(corsOptions));
 
 //----------------------------------------PASSPORT
 

@@ -1,40 +1,42 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs')
-const Profile = require('../app/models/user');
+const Profile = require('../app/models/user.js');
 const { forwardAuthenticated } = require('../config/auth');
 const passport = require('passport');
-console.log('db: ', Profile);
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+}
 
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+router.use(cors(corsOptions));
 
-router.post('/register', (req, res) => {
-  const { name, photo, email, password, zipcode, bloop, bleep } = req.body;
-  Profile.findOne({ email: email }).then(user => {
-    if (user) {
-      return console.log('email already exists!')
-    }
-    else {
-      const newUser = new user({
-        name, photo, email, password, zipcode, bloop, bleep
-      });
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then(user => {
-              res.redirect('/login');
-            })
-          .catch(err=>console.log(err));
-        });
-      });
-    }
-  });
+router.use(bodyParser.urlencoded({ extended: true }));
+
+
+router.post('/signup', (req, res) => {
+  const newUser = req.body;
+  console.log(newUser);
+  Profile.create({newUser}, (req, userMade) => {
+    console.log('User made: ', userMade);
+    res.redirect('http://localhost:3000')
+  })
+  
+      // bcrypt.genSalt(10, (err, salt) => {
+      //   bcrypt.hash(newUser.password, salt) (err, hash) => {
+      //     if (err) throw err;
+      //     newUser.password = hash;
+      //     newUser
+      //       .save()
+      //       .then(user => {
+      //         res.redirect('/login');
+      //       })
+      //     .catch(err=>console.log(err));
+      //   });
 });
+
 
 //Login
 router.post('/login', (req, res, next) => {
