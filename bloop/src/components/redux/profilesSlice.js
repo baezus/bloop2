@@ -14,6 +14,7 @@ const profilesSlice = createSlice({
         axios.post('http://localhost:2737/users/signup', action.payload)
         .then((res) => {
           console.log(res.data);
+          axios.get('/');
         }).catch((error) => {
           console.log(error)
         });

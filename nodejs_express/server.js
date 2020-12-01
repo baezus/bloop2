@@ -22,8 +22,7 @@ app.use(express.static(__dirname));
 require('dotenv').config();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
+  supports_credentials: true
 };
 
 //------------------------------------MIDDLEWARE USE

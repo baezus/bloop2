@@ -5,23 +5,14 @@ const Profile = require('../app/models/user.js');
 const { forwardAuthenticated } = require('../config/auth');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-}
-
-router.use(cors(corsOptions));
-
-router.use(bodyParser.urlencoded({ extended: true }));
-
 
 router.post('/signup', (req, res) => {
   const newUser = req.body;
   console.log(newUser);
   Profile.create(newUser, (err, userMade) => {
     console.log('User made: ', newUser);
-    res.redirect('http://localhost:3000')
+    userMade.save().then(
+    res.redirect('/'));
   })
   
       // bcrypt.genSalt(10, (err, salt) => {

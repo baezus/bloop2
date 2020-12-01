@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import Footer from '../features/filters/Footer'
-import AddProfile from '../features/profiles/AddProfile'
-import VisibleProfileList from '../features/profiles/VisibleProfileList'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
-import userAPI from '../apis/profileService'
+import React from 'react'
+import { Switch, Route, Link } from 'react-router-dom';
 import CreateProfile from './CreateProfile'
 import '../styles/bloop.scss'
 
 function App () {
   
   return (
-    <Router>
+    
     <div className="App">
       <div className="second-section">
         <section className="hero is-fullheight is-success has-background-pink second-section">
@@ -35,7 +30,6 @@ function App () {
               </div>
             </div>
           </section>
-          <CreateProfile />
       </div>
 
       <div>
@@ -45,7 +39,7 @@ function App () {
         </Switch>
       </div>
     </div>
-  </Router>
+  
   )
 }
 

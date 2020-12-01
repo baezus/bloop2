@@ -28,10 +28,11 @@ const AddProfile = ({ addProfile }) => {
     setZipCode('')
     setBloop('')
     setBleep('')
+
   }
 
   return (
-    <form method="POST" action="http://localhost:2737/users/signup" onSubmit= {onSubmit}>
+    <form method="POST" action="http://localhost:2737/users/signup" encType="multipart/form-data" onSubmit= {onSubmit}>
 
         <div className="field">
         <label className="label">Name</label>
