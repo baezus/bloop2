@@ -22,13 +22,6 @@ app.get('/', function (req, res, next) {
   res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(client) {
-  console.log('Client connected ...');
-  client.on('join', function (data) {
-    console.log(data);
-  });
-})
-
 //-------------------------------------Routes & Mongoose Config
 const userAPI = require('./routes/userAPI')
 const indexAPI = require('./routes/index')
@@ -93,7 +86,15 @@ app.use(passport.session());
 
 app.use('/users', userAPI); 
 
- // Server start
+io.on('connection', socket => {
+  const { id } = socket.client;
+  console.log(`User connected: ${id}`);
+  socket.on('chat message', ({ nickname, msg }) => {
+    io.emit('chat message', { nickname, msg });
+  });
+});
+
+// Server start
 // app.listen(port, () => console.log('Server running on port ' + port));
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
