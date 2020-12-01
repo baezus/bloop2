@@ -3,13 +3,22 @@ import '../styles/blah.scss';
 
 const Blah = () => {
   return (
-    <div className='blah-blah'>
-      <ul id="messages">
-      </ul>
-      <form action="">
-        <input id="m" autoComplete="off" /><button>Send</button>
-      </form>
-    </div>
+      <div>
+        <span>Nickname</span>
+        <input
+          name="nickname"
+          onChange={e => this.onTextChange(e)}
+          value={this.state.nickname}
+        />
+        <span>Message</span>
+        <input
+          name="msg"
+          onChange={e => this.onTextChange(e)}
+          value={this.state.msg}
+        />
+        <button onClick={this.onMessageSubmit}>Send</button>
+        <div>{this.renderChat()}</div>
+      </div>
   );
 }
 

@@ -65,7 +65,23 @@ class App extends Component {
                           <li><Link to="/users/signup" className="nav-link">Register</Link></li>
                         </ul>
                       </nav>
-                      <Blah/>
+                      
+                      <div>
+                        <span>Nickname</span>
+                        <input
+                          name="nickname"
+                          onChange={e => this.onTextChange(e)}
+                          value={this.state.nickname}
+                        />
+                        <span>Message</span>
+                        <input
+                          name="msg"
+                          onChange={e => this.onTextChange(e)}
+                          value={this.state.msg}
+                        />
+                        <button onClick={this.onMessageSubmit}>Send</button>
+                        <div>{this.renderChat()}</div>
+                      </div>
                     </div>
                   </div>
                 </div>

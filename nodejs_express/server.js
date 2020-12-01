@@ -4,10 +4,17 @@ const http = require('http');
 const express = require('express');
 const port = process.env.PORT || 2737;
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*'
+  }
+});
+
 console.log(io);
+
 //-------------------------------------Socket.io Config
 // const io = socketIO(server);
 
@@ -35,7 +42,6 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');
-const cors = require('cors');
 
 require('dotenv').config();
 
