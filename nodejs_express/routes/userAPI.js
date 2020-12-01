@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcryptjs')
 const Profile = require('../app/models/user');
 const { forwardAuthenticated } = require('../config/auth');
 const passport = require('passport');
