@@ -1,9 +1,34 @@
-//-------------------------------------Express & MongoDB Config
-
+//-------------------------------------Express Config
+'use strict';
+const http = require('http');
 const express = require('express');
 const port = process.env.PORT || 2737;
 const path = require('path');
 const app = express();
+const server = http.createServer(app);
+const io = require('socket.io')(server);
+console.log(io);
+//-------------------------------------Socket.io Config
+// const io = socketIO(server);
+
+// io.set('browser client minification', true);
+// io.set('browser client etag', true);
+// io.set('browser client gzip', true);
+// io.set('browser client expires', true);
+
+app.use(express.static(__dirname + '/static'))
+app.get('/', function (req, res, next) {
+  res.sendFile(__dirname + '/index.html');
+});
+
+io.on('connection', function(client) {
+  console.log('Client connected ...');
+  client.on('join', function (data) {
+    console.log(data);
+  });
+})
+
+//-------------------------------------Routes & Mongoose Config
 const userAPI = require('./routes/userAPI')
 const indexAPI = require('./routes/index')
 const mongoose = require('mongoose');
@@ -42,8 +67,34 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //-------------------------------------- ROUTES
-app.use('/', indexAPI);
+// app.use('/', indexAPI);
+app.get('/', function (req, res) {
+  res.send('hello world!');
+  console.log('root visited!');
+  io.emit('new_message', 'Hello io.world!');
+});
+
+// Socket.io
+// const connections = [];
+// const title = "Untitled";
+
+// io.sockets.on('connection', (socket) => {
+
+//   socket.once('disconnect', () => {
+//     connections.splice(connections.indexOf(socket), 1);
+//     socket.disconnect();
+//     console.log('Disconnected: %s. Remained: %s.', socket.id, connections.length)
+//   })
+
+
+// connections.push(socket);
+// console.log('Connected: %s. Total: %s', socket.id, connections.length);
+
 app.use('/users', userAPI); 
 
-// Server start
-app.listen(port, () => console.log('Server running on port ' + port));
+ // Server start
+// app.listen(port, () => console.log('Server running on port ' + port));
+
+server.listen(process.env.PORT || 2737, function () {
+  console.log('Server is running on localhost: 2737!')
+});
