@@ -11,7 +11,7 @@ const profilesSlice = createSlice({
       reducer(state, action) {
         const { id, name, bloop } = action.payload
         state.push({ id, name, bloop, completed: false })
-        axios.post('http://localhost:2737/users/signup', action.payload)
+        axios.post('http://localhost:3000/users/signup', action.payload)
         .then((res) => {
           console.log(res.data);
         }).catch((error) => {

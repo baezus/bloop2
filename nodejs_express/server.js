@@ -40,6 +40,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 let LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser(function(user, done) {
@@ -137,6 +139,9 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
   //flash message including name
 });
+
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/userAPI.js'))
 
 // Server start
 app.listen(port, () => console.log('Server running on port ' + port));
