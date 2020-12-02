@@ -130,34 +130,34 @@ passport.deserializeUser((id, cb) => {
 
 const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
 
-io.use(wrap(sessionMiddleware));
-io.use(wrap(passport.initialize()));
-io.use(wrap(passport.session()));
+// io.use(wrap(sessionMiddleware));
+// io.use(wrap(passport.initialize()));
+// io.use(wrap(passport.session()));
 
-io.use((socket, next) => {
-  if (socket.request.user) {
-    next();
-  } else {
-    next(new Error('unauthorized'))
-  }
-});
+// io.use((socket, next) => {
+//   if (socket.request.user) {
+//     next();
+//   } else {
+//     next(new Error('unauthorized'))
+//   }
+// });
 
 io.on('connection', socket => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
-  
   socket.on('chat message', ({ nickname, msg }) => {
+    console.log('submitted a chat')
     io.emit('chat message', { nickname, msg });
   });
 
-  socket.on('whoami', (cb) => {
-    cb(socket.request.user ? socket.request.user.username : '');
-  });
+  // socket.on('whoami', (cb) => {
+  //   cb(socket.request.user ? socket.request.user.username : '');
+  // });
 
-  const session = socket.request.session;
-  console.log(`saving sid ${socket.id} in session ${session.id}`);
-  session.socketId = socket.id;
-  session.save();
+  // const session = socket.request.session;
+  // console.log(`saving sid ${socket.id} in session ${session.id}`);
+  // session.socketId = socket.id;
+  // session.save();
 });
 
 server.listen(process.env.PORT || 2737, function () {
