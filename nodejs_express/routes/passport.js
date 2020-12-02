@@ -20,7 +20,7 @@ router.post('/signup', async (req, res) => {
 //Login
 router.post('/login', async (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: 'http://localhost:3000',
+    successRedirect: 'http://localhost:3000/dashboard',
     failureRedirect: 'http://localhost:3000'
   })(req, res, next);
 });
