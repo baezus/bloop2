@@ -51,12 +51,13 @@ app.use(morgan('tiny'));
 app.use(cors(corsOptions));
 
 //----------------------------------------PASSPORT
-
-app.use(session({
-  secret: 'bolobrazy',
-  resave: true,
-  saveUninitialized: true
-}));
+const sessionMiddleware = session({ secret: 'bolobrazy', resave: false, saveUninitialized: false });
+app.use(sessionMiddleware);
+// app.use(session({
+//   secret: 'bolobrazy',
+//   resave: true,
+//   saveUninitialized: true
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -140,12 +141,14 @@ io.use((socket, next) => {
   }
 });
 
-io.on('connect', socket => {
+io.on('connection', socket => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
+  
   socket.on('chat message', ({ nickname, msg }) => {
     io.emit('chat message', { nickname, msg });
   });
+
   socket.on('whoami', (cb) => {
     cb(socket.request.user ? socket.request.user.username : '');
   });
