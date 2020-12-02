@@ -7,42 +7,42 @@ import Dashboard from './Dashboard';
 import Blah from './Blah';
 import '../styles/bloop.scss'
 
-const socket = io.connect('http://localhost:2737');
+// const socket = io.connect('http://localhost:2737');
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = { msg: "", chat: [], nickname: ""};
-  }
+  // constructor() {
+  //   super();
+  //   this.state = { msg: "", chat: [], nickname: ""};
+  // }
 
-  componentDidMount() {
-    socket.on('chat message', ({ nickname, msg }) => {
-      this.setState({
-        chat: [...this.state.chat, { nickname, msg }]
-      });
-    });
-  }
+  // componentDidMount() {
+  //   socket.on('chat message', ({ nickname, msg }) => {
+  //     this.setState({
+  //       chat: [...this.state.chat, { nickname, msg }]
+  //     });
+  //   });
+  // }
 
-  onTextChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  // onTextChange = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
 
-  onMessageSubmit = () => {
-    const { nickname, msg } = this.state;
-    socket.emit('chat message', { nickname, msg});
-    this.setState({ msg: '' });
-  };
+  // onMessageSubmit = () => {
+  //   const { nickname, msg } = this.state;
+  //   socket.emit('chat message', { nickname, msg});
+  //   this.setState({ msg: '' });
+  // };
 
-  renderChat() {
-    const { chat } = this.state;
-    return chat.map(({ nickname, msg }, idx) => (
-      <div key={idx}>
-        <span style={{ color: 'green' }}>{nickname} </span>
+  // renderChat() {
+  //   const { chat } = this.state;
+  //   return chat.map(({ nickname, msg }, idx) => (
+  //     <div key={idx}>
+  //       <span style={{ color: 'green' }}>{nickname} </span>
 
-        <span>{msg}</span>
-      </div>
-    ));
-  }
+  //       <span>{msg}</span>
+  //     </div>
+  //   ));
+  
 
   render() {
     return (
@@ -56,6 +56,7 @@ class App extends Component {
                     <div className="column">
                       <h1 className="title is-1">Bloop</h1><br/>
                       <h3 className="subtitle is-3">Who's out there?</h3>
+                      <Blah />   
                     </div>
                     <div className="column">
                       <nav className="breadcrumb is-right is-large has-bullet-separator" aria-label="breadcrumbs">
@@ -65,8 +66,8 @@ class App extends Component {
                           <li><Link to="/users/signup" className="nav-link">Register</Link></li>
                         </ul>
                       </nav>
-                      
-                      <div>
+                  
+                      {/* <div>
                         <span>Nickname</span>
                         <input
                           name="nickname"
@@ -81,7 +82,7 @@ class App extends Component {
                         />
                         <button onClick={this.onMessageSubmit}>Send</button>
                         <div>{this.renderChat()}</div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -94,7 +95,9 @@ class App extends Component {
             <Route exact path="/"/>
             <Route exact path='/users/signup' component={Passport}/>
             <Route exact path='/users/login' component={Login}/>
+            
             <Route exact path='/dashboard' component={Dashboard}/>
+            <Route exact path='/dashboard/chat' component={Blah}/>
           </Switch>
         </div>
       </div>

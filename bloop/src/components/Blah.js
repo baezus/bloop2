@@ -1,7 +1,47 @@
 import React from 'react';
 import '../styles/blah.scss';
+import io from 'socket.io-client';
+const socket = io.connect('http://localhost:2737');
 
-const Blah = () => {
+class Blah extends React.Component {
+
+  constructor() {
+    super();
+    this.state = { msg: "", chat: [], nickname: ""};
+  }
+
+  componentDidMount() {
+    socket.on('chat message', ({ nickname, msg }) => {
+      this.setState({
+        chat: [...this.state.chat, { nickname, msg }]
+      });
+    });
+  }
+
+  onTextChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onMessageSubmit = () => {
+    const { nickname, msg } = this.state;
+    socket.emit('chat message', { nickname, msg });
+    
+    this.setState({ msg: '' });
+  };
+
+  renderChat() {
+    const { chat } = this.state;
+    return chat.map(({ nickname, msg }, idx) => (
+      <div key={idx}>
+        <span style={{ color: 'green' }}>{nickname} </span>
+
+        <span>{msg}</span>
+      </div>
+    ));
+  }
+
+  render() {
+    
   return (
       <div>
         <span>Nickname</span>
@@ -16,10 +56,11 @@ const Blah = () => {
           onChange={e => this.onTextChange(e)}
           value={this.state.msg}
         />
-        <button onClick={this.onMessageSubmit}>Send</button>
+        <button className="btn is-1" onClick={this.onMessageSubmit}>Send</button>
         <div>{this.renderChat()}</div>
       </div>
-  );
+    );
+  }
 }
 
 export default Blah;
