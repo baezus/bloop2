@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom';
 import io from 'socket.io-client';
-import CreateProfile from './CreateProfile'
+import Passport from './Passport'
 import Login from './LogIn'
 import Dashboard from './Dashboard';
 import Blah from './Blah';
@@ -92,7 +92,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/"/>
-            <Route exact path='/users/signup' component={CreateProfile}/>
+            <Route exact path='/users/signup' component={Passport}/>
             <Route exact path='/users/login' component={Login}/>
             <Route exact path='/dashboard' component={Dashboard}/>
           </Switch>

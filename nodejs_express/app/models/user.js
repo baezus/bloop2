@@ -3,16 +3,14 @@ const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
 
-
-  email : String,
-  password : String,
   name: String,
   photo: String, //should be a link to static? Or ?
   zipcode: Number,
   lastGeo: Array,
   bloop: String,
   bleep: String,
-  inbox: Array
+  inbox: Array,
+  passport: String
   
 });
 

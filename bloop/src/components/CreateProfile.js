@@ -31,7 +31,7 @@ const AddProfile = ({ addProfile }) => {
   }
 
   return (
-    <form method="POST" action="http://localhost:2737/users/signup" encType="multipart/form-data" onSubmit= {onSubmit}>
+    <form method="POST" action="http://localhost:2737/users/profile" encType="multipart/form-data" onSubmit= {onSubmit}>
 
         <div className="field">
         <label className="label">Name</label>

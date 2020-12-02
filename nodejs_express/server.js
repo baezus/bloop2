@@ -24,10 +24,11 @@ app.get('/', function (req, res, next) {
 });
 
 //-------------------------------------Routes & Mongoose Config
-const userAPI = require('./routes/userAPI')
+const passportCtrl = require('./routes/passport')
 const indexAPI = require('./routes/index')
 const mongoose = require('mongoose');
-const maybeDB = require('./app/models/index');
+const db = require('./app/models/index')
+const passportDB = require('./app/models/passport');
 
 //--------------------------------------MIDDLEWARE
 const passport = require('passport');
@@ -53,12 +54,6 @@ app.use(cors(corsOptions));
 //----------------------------------------PASSPORT
 const sessionMiddleware = session({ secret: 'bolobrazy', resave: false, saveUninitialized: false });
 app.use(sessionMiddleware);
-// app.use(session({
-//   secret: 'bolobrazy',
-//   resave: true,
-//   saveUninitialized: true
-// }));
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -71,51 +66,57 @@ const DUMMY_USER = {
 
 passport.use(
   new LocalStrategy((username, password, done) => {
-    if (username === "john" && password === "doe") {
-      console.log("authentication OK");
-      return done(null, DUMMY_USER);
+
+    //search the passport DB for a match
+    const comparison = passportDB.find({ 'username': username })
+    .then((err, foundPassport) => {
+      if (err) return console.log(err);
+      console.log(foundPassport);
+        if (username === foundPassport.username && password === foundPassport.password) {
+        console.log("authentication O K");
+      return done(null, foundPassport);
     } else {
       console.log("wrong credentials");
       return done(null, false);
     }
-  })
-);
+  })}
+));
 
-app.get('/', (req, res) => {
-  const isAuthenticated = !!req.user;
-  if (isAuthenticated) {
-    console.log(`user is authenticated, session is ${req.session.id}`);
-  } else {
-    console.log('unknown user');
-  }
-  res.sendFile(isAuthenticated ? "index.html" : "login.html", { root: __dirname });
-});
+// app.get('/', (req, res) => {
+//   const isAuthenticated = !!req.user;
+//   if (isAuthenticated) {
+//     console.log(`user is authenticated, session is ${req.session.id}`);
+//   } else {
+//     console.log('unknown user');
+//   }
+//   res.sendFile(isAuthenticated ? "index.html" : "login.html", { root: __dirname });
+// });
 
-app.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/',
-  })
-);
+// app.post(
+//   '/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: '/',
+//   })
+// );
 
-app.post('/logout', (req, res) => {
-  console.log(`logout ${req.session.id}`);
-  const socketId = req.session.socketId;
-  if (socketId && io.of('/').connected[socketId]) {
-    console.log(`forcefully closing socket ${socketId}`);
-    io.sockets.connected[socketId].disconnect(true);
-  }
-  req.logout();
-  res.cookie('connect.sid', '', { expires: new Date() });
-  res.redirect('/');
-});
+// app.post('/logout', (req, res) => {
+//   console.log(`logout ${req.session.id}`);
+//   const socketId = req.session.socketId;
+//   if (socketId && io.of('/').connected[socketId]) {
+//     console.log(`forcefully closing socket ${socketId}`);
+//     io.sockets.connected[socketId].disconnect(true);
+//   }
+//   req.logout();
+//   res.cookie('connect.sid', '', { expires: new Date() });
+//   res.redirect('/');
+// });
 
 
 
 //-------------------------------------- ROUTES
 
-// app.use('/users', userAPI); 
+app.use('/users', passportCtrl); 
 
 passport.serializeUser((user, cb) => {
   console.log(`serializeUser ${user.id}`);
