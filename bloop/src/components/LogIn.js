@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Login = () => {
-
   return(
+    
     <div>
-      <form action="/users/login" method="POST">
+      <form action="/login" method="POST">
         <div>
-          <label>Name: </label>
-          <input type="text" name="name"/>
+          <label>Username: </label>
+          <input type="text" name="username"/>
         </div>
 
         <div>
