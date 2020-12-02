@@ -2,7 +2,27 @@ const express = require('express');
 const router = express.Router();
 const passportDB = require('../app/models/passport.js');
 const passport = require('passport');
+const LocalStrategy = require("passport-local").Strategy;
 
+
+
+passport.use(
+  new LocalStrategy((username, password, done) => {
+
+    //search the passport DB for a match
+    const comparison = passportDB.find({ 'username': username })
+    .then((err, foundPassport) => {
+      if (err) return console.log(err);
+      console.log(foundPassport);
+        if (username === foundPassport.username && password === foundPassport.password) {
+        console.log("authentication O K");
+      return done(null, foundPassport);
+    } else {
+      console.log("wrong credentials");
+      return done(null, false);
+    }
+  })}
+));
 
 router.post('/signup', async (req, res) => {
   console.log('req.body: ', req.body);
