@@ -12,15 +12,38 @@ $accentBright: #fbf5ef;
 
 
 $card-background-color: #494d7e;
-$button-color: #272744;
 $button-background-color: transparent;
-$button-border-color: #494d7e;
+
+$button-color: $accentBright;
+$button-border-color: $primaryShadow;
+
+$button-active-color: $drowsyPeach;
+$button-active-color: $ghostColor;
+
+$button-focus-color: $primaryColor;
+$button-focus-border-color: $primaryShadow;
+$button-focus-box-shadow-color: $ghostColor;
+
+$button-hover-color: $primaryColor;
+$button-hover-border-color: $ghostColor;
+
+
+
+
+
+
+$control-radius: 10rem;
+
+
 $message-header-background-color: transparent;
 $message-background-color: transparent;
+
 $message-body-border-color: #8b6d9c;
 $message-header-border-color: #8b6d9c;
 $message-header-body-border-width: 7px;
+
 $message-body-radius: 10rem;
+
 $message-header-radius: 2rem;
-$message-header-color: #c69fa5;
+$message-header-color: $accentLight;
 

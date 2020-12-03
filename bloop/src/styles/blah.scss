@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font: 13px Helvetica, Arial; }
 form { background: #000; padding: 3px; width: 100%; }
@@ -5,9 +7,18 @@ form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form button { width: 9%; background: #fbf5ef; border: none; padding: 10px; }
 #messages { list-style-type: none; margin: 0; padding: 0; }
 #messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; }
+#messages li:nth-child(odd) { background: transparent; }
 #messages { margin-bottom: 40px }
 
-.message-header {
-  border-color: #8b6d9c;
+
+textarea#bloopinPut.textarea.is-small {
+  background-color: transparent;
+  border-color: $ghostColor;
+  border-radius: 4px;
+  color: $accentBright;
+  font-weight: 15px;
+}
+
+.column.is-half {
+  text-align: center;
 }

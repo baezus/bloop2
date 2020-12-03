@@ -51,7 +51,7 @@ class App extends Component {
           <section className="hero is-fullheight is-success has-background-pink second-section">
             <div className="hero-body">
                 <div className="container">
-                  <div className="columns">
+                  <div className="columns is-centered">
                     <div className="column">
                       <h1 className="title">Bloop</h1>
                       <h3 className="subtitle is-3">Who's out there?</h3>

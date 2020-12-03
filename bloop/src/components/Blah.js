@@ -57,16 +57,23 @@ class Blah extends React.Component {
     <div className="message">
       <div className="message-header">Bloop Box</div>
       <div className = "bloopBox message-body"> 
-        <div className="bloopBin">{this.renderChat()}</div>
-        <div className="bloopText">
-          <span></span>
-          <input
+        <div className="container">{this.renderChat()}
+      
+        <div className="field">
+          <div className="control">
+          <textarea
+            className="textarea is-small"
+            id="bloopinPut"
+            rows="1"
             name="msg"
             onChange={e => this.onTextChange(e)}
             value={this.state.msg}
           />
-          <button className="button is-outlined is-rounded" onClick={this.onMessageSubmit}>Bloop</button>
+          </div>
+          <div className="column is-half">
+          <button className="button is-outlined is-rounded is-small" onClick={this.onMessageSubmit}>Bloop</button></div>
         </div>
+      </div>
       </div>
     </div>
     </div>
