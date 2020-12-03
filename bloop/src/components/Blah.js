@@ -45,6 +45,7 @@ class Blah extends React.Component {
   render() {
     
   return (
+    <div className="column is-half">
     <div className="above">
         <div className = "blooperAnnounce block">
           <span>Bloopr</span>
@@ -75,6 +76,7 @@ class Blah extends React.Component {
         </div>
       </div>
       </div>
+    </div>
     </div>
     </div>
    );
