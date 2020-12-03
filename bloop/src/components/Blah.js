@@ -34,9 +34,9 @@ class Blah extends React.Component {
     return chat.map(({ nickname, msg }, idx) => (
       <div key={idx}>
         <div className="sentBlooper">
-        <span className="blooper">{nickname} </span>
+        <span className="blooper is-size-6">{nickname} </span>
 
-        <span className="sentBloop">{msg}</span>
+        <span className="sentBloop is-size-6">{msg}</span>
       </div>
       </div>
     ));
@@ -55,14 +55,14 @@ class Blah extends React.Component {
           />
         </div>
     <div className="message">
-      <div className="message-header">Bloop Box</div>
+      <div className="message-header is-size-4">Bloop Box</div>
       <div className = "bloopBox message-body"> 
         <div className="container">{this.renderChat()}
       
         <div className="field">
           <div className="control">
           <textarea
-            className="textarea is-small"
+            className="textarea is-small is-size-6"
             id="bloopinPut"
             rows="1"
             name="msg"
@@ -71,7 +71,7 @@ class Blah extends React.Component {
           />
           </div>
           <div className="column is-half">
-          <button className="button is-outlined is-rounded is-small" onClick={this.onMessageSubmit}>Bloop</button></div>
+          <button className="button is-outlined is-rounded is-small is-size-6" onClick={this.onMessageSubmit}>Bloop</button></div>
         </div>
       </div>
       </div>

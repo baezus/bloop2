@@ -15,7 +15,7 @@ $card-background-color: #494d7e;
 $button-background-color: transparent;
 
 $button-color: $accentBright;
-$button-border-color: $primaryShadow;
+$button-border-color: $ghostColor;
 
 $button-active-color: $drowsyPeach;
 $button-active-color: $ghostColor;
@@ -40,7 +40,7 @@ $message-background-color: transparent;
 
 $message-body-border-color: #8b6d9c;
 $message-header-border-color: #8b6d9c;
-$message-header-body-border-width: 7px;
+$message-header-body-border-width: 5px;
 
 $message-body-radius: 10rem;
 

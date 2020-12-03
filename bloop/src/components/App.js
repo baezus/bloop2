@@ -49,44 +49,33 @@ class App extends Component {
       <div className="App">
         <div className="second-section">
           <section className="hero is-fullheight is-success has-background-pink second-section">
-            <div className="hero-body">
-                <div className="container">
+            <div className="hero-head">
+                
                   <div className="columns is-centered">
                     <div className="column">
                       <h1 className="title">Bloop</h1>
                       <h3 className="subtitle is-3">Who's out there?</h3>
                         
                     </div>
-                    <div className="column">
-               
-                  
-                      {/* <div>
-                        <span>Nickname</span>
-                        <input
-                          name="nickname"
-                          onChange={e => this.onTextChange(e)}
-                          value={this.state.nickname}
-                        />
-                        <span>Message</span>
-                        <input
-                          name="msg"
-                          onChange={e => this.onTextChange(e)}
-                          value={this.state.msg}
-                        />
-                        <button onClick={this.onMessageSubmit}>Send</button>
-                        <div>{this.renderChat()}</div>
-                      </div> */}
+                    </div>
+                  </div>
+                    <div className="hero-body">
+                    <div className="column is-half">
+
                       <Blah />
+                    </div>
+                    </div>
+                    <div className="hero-foot">
                       <nav className="breadcrumb is-right is-large has-bullet-separator" aria-label="breadcrumbs">
                         <ul>
                           <li className="nav-link"><Link to="/" className="nav-link">Bloop</Link></li>
                           <li><Link to="/users/login" className="nav-link">Log In</Link></li>
                           <li><Link to="/users/signup" className="nav-link">Register</Link></li>
                         </ul>
-                      </nav> 
-                    </div>
-                  </div>
-                </div>
+                      </nav>
+                      
+                  
+               
               </div>
             </section>
         </div>

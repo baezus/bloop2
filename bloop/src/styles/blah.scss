@@ -22,3 +22,12 @@ textarea#bloopinPut.textarea.is-small {
 .column.is-half {
   text-align: center;
 }
+
+button.button.is-outlined.is-rounded.is-small.is-size-6 {
+  border-width: 3px;
+  box-shadow: 2px 1px 2px $primaryShadow;
+}
+
+div.bloopBox.message-body {
+  box-shadow: 2px 1px 2px $primaryShadow;
+}
