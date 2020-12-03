@@ -56,7 +56,7 @@ class Blah extends React.Component {
           onChange={e => this.onTextChange(e)}
           value={this.state.msg}
         />
-        <button className="btn is-1" onClick={this.onMessageSubmit}>Send</button>
+        <button className="button is-outlined is-rounded" onClick={this.onMessageSubmit}>Blah</button>
         <div>{this.renderChat()}</div>
       </div>
     );
