@@ -4,6 +4,7 @@ import Passport from './Passport'
 import Login from './LogIn'
 import Dashboard from './Dashboard';
 import Blah from './Blah';
+import Footer from './Footer';
 import '../styles/bloop.scss'
 
 
@@ -32,13 +33,7 @@ class App extends Component {
                     </div>
                     </div>
                     <div className="hero-foot">
-                      <nav className="breadcrumb is-right is-large has-bullet-separator" aria-label="breadcrumbs">
-                        <ul className="nav-list">
-                          <li className="nav-link"><Link to="/" className="nav-link">Bloop</Link></li>
-                          <li><Link to="/users/login" className="nav-link">Log In</Link></li>
-                          <li><Link to="/users/signup" className="nav-link">Register</Link></li>
-                        </ul>
-                      </nav>
+                   <Footer />
                       
                   
                
