@@ -1,4 +1,7 @@
 import React from 'react';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+
 import '../styles/dashboard.scss';
 
 const Dashboard = () => {
