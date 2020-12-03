@@ -16,8 +16,9 @@ const Passport = () => {
       password
     }).then((res) => {
       console.log(res);
-    }
-  )};
+    }).catch((e) => {
+      console.error(e);
+    })};
 
   return(
     

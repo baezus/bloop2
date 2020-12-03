@@ -9,8 +9,8 @@ const profilesSlice = createSlice({
   reducers: {
     addProfile: {
       reducer(state, action) {
-        const { id, name, photo, email, zipcode, bloop, bleep } = action.payload
-        state.push({ id, name, photo, email, zipcode, bloop, bleep, completed: false })
+        const { id, username, password } = action.payload
+        state.push({ id, username, password, completed: false })
         axios.post('http://localhost:2737/users/signup', action.payload)
         .then((res) => {
           console.log(res.data);
@@ -19,8 +19,8 @@ const profilesSlice = createSlice({
           console.log(error)
         });
       },
-      prepare(name, photo, email, zipcode, bloop, bleep) {
-        return { payload: { name, photo, email, zipcode, bloop, bleep, id: nextProfileId++ }}
+      prepare(username, password) {
+        return { payload: { username, password, id: nextProfileId++ }}
       }
     },
   }

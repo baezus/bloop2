@@ -24,7 +24,7 @@ passport.use(
   })}
 ));
 
-router.post('/signup', async (req, res) => {
+router.post('/signup', (req, res) => {
   console.log('req.body: ', req.body);
   const newUser = req.body;
   console.log('new user: ', newUser);

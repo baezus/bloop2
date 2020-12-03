@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import Passport from './Passport'
-import Login from './LogIn'
+import Passport from './Passport';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+import OneUser from './ShowUser';
 import Dashboard from './Dashboard';
 import Blah from './Blah';
 import Header from './Header';
@@ -19,49 +21,19 @@ class App extends Component {
             <div className="hero-head">
               <Header/>
             </div>
-
-
-<div className="hero-body">
-          <Switch>
-            {/* <Route exact path="/" component={Index}/> */}
-            {/* <Route exact path="/users" component={UsersPage}/>
-            <Route exact path="/user/:userId" component={UserShowPage}/> */}
-            {/* <Route exact path="/about" component={About}/> */}
-            <Route exact path='/users/signup' component={Passport}/>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/signup' component={Passport}/>
-            {/* <Route exact path='/dashboard' component={Dashboard}/> */}
-            <Route exact path='/dashboard' component={Blah}/>
-          </Switch>
-
-</div>
-
-{/* 
-              <div className="hero-body">
-                  <Blah />
-              </div> */}
-
-
-
-
-
-
-                <div className="hero-foot">
-                   <Footer />
-                </div>
+            <div className="hero-body">
+              <Switch>
+                <Route exact path='/signup' component={Passport}/>
+                <Route exact path='/login' component={LoginButton}/>
+                <Route exact path='/user' component={OneUser}/>
+                <Route exact path='/signup' component={Passport}/>
+                <Route exact path='/bloop' component={Blah}/>
+              </Switch>
+            </div>
+            <div className="hero-foot">
+              <Footer />
+            </div>
           </section>
-        </div>
-        <div>
-          <Switch>
-            {/* <Route exact path="/" component={Index}/> */}
-            {/* <Route exact path="/users" component={UsersPage}/>
-            <Route exact path="/user/:userId" component={UserShowPage}/> */}
-            {/* <Route exact path="/about" component={About}/> */}
-            <Route exact path='/users/signup' component={Passport}/>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/dashboard' component={Dashboard}/>
-            <Route exact path='/dashboard' component={Blah}/>
-          </Switch>
         </div>
       </div>
     )
