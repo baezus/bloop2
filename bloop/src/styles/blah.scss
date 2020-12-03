@@ -31,3 +31,16 @@ button.button.is-outlined.is-rounded.is-small.is-size-6 {
 div.bloopBox.message-body {
   box-shadow: 2px 1px 2px $primaryShadow;
 }
+
+.blooper.is-size-6 {
+  color: $accentLight;
+  font-weight: 750;
+}
+
+.sentBloop.is-size-6 {
+  color: $accentBright;
+}
+
+.sentBlooper {
+  text-align: left;
+}
