@@ -7,3 +7,7 @@ form button { width: 9%; background: #fbf5ef; border: none; padding: 10px; }
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
 #messages { margin-bottom: 40px }
+
+.message-header {
+  border-color: #8b6d9c;
+}

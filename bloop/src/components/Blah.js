@@ -33,9 +33,11 @@ class Blah extends React.Component {
     const { chat } = this.state;
     return chat.map(({ nickname, msg }, idx) => (
       <div key={idx}>
-        <span style={{ color: 'green' }}>{nickname} </span>
+        <div className="sentBlooper">
+        <span className="blooper">{nickname} </span>
 
-        <span>{msg}</span>
+        <span className="sentBloop">{msg}</span>
+      </div>
       </div>
     ));
   }
@@ -43,23 +45,32 @@ class Blah extends React.Component {
   render() {
     
   return (
-      <div>
-        <span>Nickname</span>
-        <input
-          name="nickname"
-          onChange={e => this.onTextChange(e)}
-          value={this.state.nickname}
-        />
-        <span>Message</span>
-        <input
-          name="msg"
-          onChange={e => this.onTextChange(e)}
-          value={this.state.msg}
-        />
-        <button className="button is-outlined is-rounded" onClick={this.onMessageSubmit}>Blah</button>
-        <div>{this.renderChat()}</div>
+    <div className="above">
+        <div className = "blooperAnnounce block">
+          <span>Bloopr</span>
+          <input
+            name="nickname"
+            onChange={e => this.onTextChange(e)}
+            value={this.state.nickname}
+          />
+        </div>
+    <div className="message">
+      <div className="message-header">Bloop Box</div>
+      <div className = "bloopBox message-body"> 
+        <div className="bloopBin">{this.renderChat()}</div>
+        <div className="bloopText">
+          <span></span>
+          <input
+            name="msg"
+            onChange={e => this.onTextChange(e)}
+            value={this.state.msg}
+          />
+          <button className="button is-outlined is-rounded" onClick={this.onMessageSubmit}>Bloop</button>
+        </div>
       </div>
-    );
+    </div>
+    </div>
+   );
   }
 }
 
