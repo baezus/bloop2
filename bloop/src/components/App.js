@@ -10,6 +10,7 @@ import Header from './Header';
 import Footer from './Footer';
 import '../styles/bloop.scss';
 import { useAuth0 } from '@auth0/auth0-react';
+import NewProfile from '../pages/NewProfile';
 import routes from '../config/routes';
 import ProfileList from '../pages/ProfileList';
 
@@ -46,7 +47,8 @@ function App () {
               { routes }
               <Switch>
                 <Route exact path='/dashboard' component={Dashboard}/>
-                <Route exact path='/profiles' component={ProfileList}/>
+                {/* <Route exact path='/profiles' component={ProfileList}/> */}
+                <Route exact path='/profiles/new' component={NewProfile}/>
                 <Route exact path='/user' component={OneUser}/>
                 <Route exact path='/login' component={LoginButton}/>
                 <Route exact path='/signup' component={Passport}/>
