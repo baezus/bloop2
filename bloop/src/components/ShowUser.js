@@ -10,8 +10,8 @@ const OneUser = () => {
 
   return (
     isAuthenticated && (
-      <div>
-        <h2>{user.name}</h2>
+      <div className="currentUser">
+        <h2>Loggin in as: {user.name}</h2>
       </div>
     )
   );

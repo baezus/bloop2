@@ -42,11 +42,6 @@ function App () {
               <OneUser/>
             </div>
             <div className="hero-body">
-              {/* <AuthStatus/> */}
-              <ul>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
-                <li><Link to='/bloop'>Bloop</Link></li>
-              </ul>
           
               { routes }
               <Switch>
