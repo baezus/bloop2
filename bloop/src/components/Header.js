@@ -12,8 +12,8 @@ const Header = () => {
           <div className="column">
             <h1 className="title">Bloop</h1>
             <h3 className="subtitle is-3">Is anyone there?</h3>
-            <LogoutButton/>  
-            <LoginButton />
+            {/* <LogoutButton/>  
+            <LoginButton /> */}
           </div>
         </div>
     

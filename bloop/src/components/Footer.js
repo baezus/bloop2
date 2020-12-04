@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, NavLink, Route } from 'react-router-dom';
 import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 const Footer = () => {
 
@@ -10,8 +11,10 @@ const Footer = () => {
       <ul className="nav-list">
         <li className="nav-link"><NavLink to="/bloop" className="nav-link">Bloop</NavLink></li>
         {/* <li className="nav-link"><NavLink to="/login" className="nav-link">Log In</NavLink></li> */}
-        <li className="nav-link"><NavLink to="/profiles" className="nav-link">All Profiles</NavLink></li>
-        <li className="nav-link"><NavLink to="/profiles/new" className="nav-link">Add New Profile</NavLink></li>
+        {/* <li className="nav-link"><NavLink to="/profiles" className="nav-link">All Profiles</NavLink></li>
+        <li className="nav-link"><NavLink to="/profiles/new" className="nav-link">Add New Profile</NavLink></li> */}
+            <LogoutButton/>  
+            <LoginButton />
       </ul>
     </nav>
 
