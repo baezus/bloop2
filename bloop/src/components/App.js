@@ -99,17 +99,6 @@ function App () {
     return <div> oops... {error.message}</div>;
   }
 
-  // if (isAuthenticated) {
-  //   return (
-  //     <div>
-  //       Hello {user.name}{' '}
-  //       <LogoutButton/>
-  //     </div>
-  //   );
-  // } else {
-  //   return <LoginButton/>
-  // }
-  
   return (
 
       <div className="App">
@@ -117,7 +106,7 @@ function App () {
           <section className="hero is-fullheight is-success has-background-pink second-section">
             <div className="hero-head">
               <Header/>
-              
+              <OneUser/>
             </div>
             <div className="hero-body">
               {/* <AuthStatus/> */}
