@@ -55,11 +55,12 @@ function App () {
                 <Route exact path='/user' component={OneUser}/>
                 <Route exact path='/signup' component={Passport}/>
                 <Route exact path='/bloop' component={Blah}/>
+                { routes }
               </Switch>
             </div>
             <div className="hero-foot">
               <Footer />
-              { routes }
+        
             </div>
           </section>
         </div>

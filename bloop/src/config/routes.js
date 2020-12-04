@@ -8,11 +8,11 @@ import NewProfile from '../pages/NewProfile';
 import UpdateProfile from '../pages/UpdateProfile';
 
 export default (
-  <Switch>
+  <>
     <Route exact path='/' component = { Home } />
     <Route exact path='/profiles' component = { ProfileList }/>
     <Route path='/profiles/new' component={ NewProfile }/>
     <Route exact path='/profiles/:id/edit' component={ UpdateProfile }/>
     <Route path='/profiles/:id' component={ ProfileShow }/>
-  </Switch>
+ </>
 );
