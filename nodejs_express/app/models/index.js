@@ -18,5 +18,6 @@ mongoose.connection.on('error', (err) => {
 
 module.exports = {
   Profile: require('./user'),
-  Passport: require('./passport')
+  Passport: require('./passport'),
+  Bloop: require('./Bloop'),
 }

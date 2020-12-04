@@ -74,13 +74,21 @@ passport.deserializeUser((id, cb) => {
 
 const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
 
+let connectedUsers = [];
+let sentMessages = [];
+
 io.on('connection', socket => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
+  connectedUsers.push(id);
+  console.log(`Current users: `, connectedUsers);
+
   socket.on('chat message', ({ nickname, msg }) => {
-    console.log('submitted a chat')
+    sentMessages.push({ nickname, msg });
+    console.log('submitted a chat; sentMessages: ', sentMessages);
     io.emit('chat message', { nickname, msg });
   });
+
 });
 
 server.listen(process.env.PORT || 2737, function () {
