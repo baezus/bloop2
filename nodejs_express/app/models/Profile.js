@@ -6,8 +6,10 @@ const profileSchema = mongoose.Schema({
   spot: String,
   bloop: String,
   bleep: String,
-  sentBloops: Array,
-  passport: String
+  sentBloops: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'SentBloops'
+  }],
   
 });
 

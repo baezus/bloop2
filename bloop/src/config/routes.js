@@ -10,7 +10,7 @@ import UpdateProfile from '../pages/UpdateProfile';
 export default (
   <>
     <Route exact path='/profiles' component = { ProfileList }/>
-    <Route path='/profiles/new' component={ NewProfile }/>
+    <Route exact path='/profiles/new' component={ NewProfile }/>
     <Route exact path='/profiles/:id/edit' component={ UpdateProfile }/>
     <Route path='/profiles/:id' component={ ProfileShow }/>
  </>

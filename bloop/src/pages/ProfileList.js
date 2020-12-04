@@ -27,14 +27,13 @@ class ProfileList extends React.Component {
   }
 
   renderProfiles() {
+    console.log(this.state.profiles);
     return this.state.profiles.map((profile) => {
-      return (
         <ProfileCard
           profile={profile}
           deleteProfile={this.deleteProfile}
-          key={profile._id}
+        
         />
-      );
     });
   }
 

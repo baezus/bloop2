@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 function ProfileCard(props) {
   return (
+    
     <li className="profileCard">
       <Link to={`/profiles/${props.key}`} className="profileCardLink">
         <h1>{props.profile.name}</h1>
