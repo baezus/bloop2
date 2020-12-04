@@ -1,4 +1,4 @@
-const url = `http://localhost:2737/api/v1/games`;
+const url = `http://localhost:2737/api/v1/profiles`;
 
 class ProfileModel {
   static all() {
