@@ -5,10 +5,10 @@ class NewProfile extends React.Component {
 
   state = {
     name: '',
-    email: '',
     region: '',
     bloop: '',
     bleep: '',
+    sentBloops: [],
   };
 
   handleInputChange = (event) => {

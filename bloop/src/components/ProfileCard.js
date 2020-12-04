@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 function ProfileCard(props) {
   return (
     <li className="profileCard">
-      <Link to={`/profiles/${props.profile._id}`} className="profileCardLink">
+      <Link to={`/profiles/${props.key}`} className="profileCardLink">
         <h1>{props.profile.name}</h1>
         <h2>{props.profile.email}</h2>
         <h3>{props.profile.region}</h3>

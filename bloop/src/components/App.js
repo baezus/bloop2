@@ -11,6 +11,7 @@ import Footer from './Footer';
 import '../styles/bloop.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import routes from '../config/routes';
+import ProfileList from '../pages/ProfileList';
 
 function App () {
 
@@ -47,11 +48,12 @@ function App () {
                 <li><Link to='/bloop'>Bloop</Link></li>
               </ul>
           
-
+              { routes }
               <Switch>
                 <Route exact path='/dashboard' component={Dashboard}/>
-                <Route exact path='/signup' component={Passport}/>
+                <Route exact path='/profiles' component={ProfileList}/>
                 <Route exact path='/user' component={OneUser}/>
+                <Route exact path='/login' component={LoginButton}/>
                 <Route exact path='/signup' component={Passport}/>
                 <Route exact path='/bloop' render={(props) => (
                   <Blah {...props} user={user}/>)}/>
@@ -59,7 +61,7 @@ function App () {
             </div>
             <div className="hero-foot">
               <Footer />
-        
+              
             </div>
           </section>
         </div>

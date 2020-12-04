@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
 
-  email: String,
   name: String,
   spot: String,
   bloop: String,
   bleep: String,
-  inbox: Array,
+  sentBloops: Array,
   passport: String
   
 });
