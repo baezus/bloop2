@@ -13,7 +13,7 @@ const io = require('socket.io')(server, {
   }
 });
 
-console.log(io);
+// console.log(io);
 
 //-------------------------------------Socket.io Config
 
@@ -61,6 +61,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //-------------------------------------- ROUTES
 
 app.use('/api/v1/profiles', routes.profiles);
+app.use('/api/v1/bloops', routes.bloops);
 
 passport.serializeUser((user, cb) => {
   console.log(`serializeUser ${user.id}`);
@@ -85,10 +86,17 @@ io.on('connection', socket => {
 
   socket.on('chat message', ({ nickname, msg }) => {
     sentMessages.push({ nickname, msg });
+    db.Bloop.create({ 'sender': nickname, 'content': msg })
+      .then((savedBloop) => {
+        console.log('saved Bloop: ', savedBloop);
+      })
+      .catch((err) => {
+        console.log('Error in the controllers create', err);
+        res.json({ Error: 'Unable to create the bloop.'});
+      });
     console.log('submitted a chat; sentMessages: ', sentMessages);
     io.emit('chat message', { nickname, msg });
   });
-
 });
 
 server.listen(process.env.PORT || 2737, function () {

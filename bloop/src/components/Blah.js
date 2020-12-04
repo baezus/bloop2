@@ -7,9 +7,12 @@ const socket = io.connect('http://localhost:2737');
 
 class Blah extends React.Component {
 
-  constructor() {
-    super();
-    this.state = { msg: "", chat: [], nickname: ""};
+  constructor(props) {
+    super(props);
+    this.state = { 
+      msg: "", 
+      chat: [], 
+      nickname: ''};
   }
 
   componentDidMount() {
@@ -25,7 +28,8 @@ class Blah extends React.Component {
   };
 
   onMessageSubmit = () => {
-    const { nickname, msg } = this.state;
+    const { msg } = this.state;
+    const { nickname } = this.props.user;
     socket.emit('chat message', { nickname, msg });
     
     this.setState({ msg: '' });
@@ -49,14 +53,15 @@ class Blah extends React.Component {
   return (
     <div className="column is-half">
     <div className="above">
-        <div className = "blooperAnnounce block">
+        {/* <div className = "blooperAnnounce block">
           <span>Bloopr</span>
           <input
             name="nickname"
             onChange={e => this.onTextChange(e)}
-            value={this.state.nickname}
+            placeholder={this.props.user.name}
+            value={this.props.user.name}
           />
-        </div>
+        </div> */}
     <div className="message">
       <div className="message-header is-size-4">Bloop Box</div>
       <div className = "bloopBox message-body"> 

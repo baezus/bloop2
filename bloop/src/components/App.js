@@ -53,8 +53,8 @@ function App () {
                 <Route exact path='/signup' component={Passport}/>
                 <Route exact path='/user' component={OneUser}/>
                 <Route exact path='/signup' component={Passport}/>
-                <Route exact path='/bloop' component={Blah}/>
-                { routes }
+                <Route exact path='/bloop' render={(props) => (
+                  <Blah {...props} user={user}/>)}/>
               </Switch>
             </div>
             <div className="hero-foot">
