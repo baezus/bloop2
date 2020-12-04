@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/blah.scss';
 import io from 'socket.io-client';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+
 const socket = io.connect('http://localhost:2737');
 
 class Blah extends React.Component {
@@ -83,4 +85,6 @@ class Blah extends React.Component {
   }
 }
 
-export default Blah;
+export default withAuthenticationRequired(Blah, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>
+});
