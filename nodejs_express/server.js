@@ -33,6 +33,7 @@ const passportDB = require('./app/models/passport');
 //--------------------------------------MIDDLEWARE
 const passport = require('passport');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');

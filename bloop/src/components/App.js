@@ -10,6 +10,7 @@ import Header from './Header';
 import Footer from './Footer';
 import '../styles/bloop.scss';
 import { useAuth0 } from '@auth0/auth0-react';
+import routes from '../config/routes';
 
 function App () {
 
@@ -58,6 +59,7 @@ function App () {
             </div>
             <div className="hero-foot">
               <Footer />
+              { routes }
             </div>
           </section>
         </div>
